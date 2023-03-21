@@ -1,0 +1,346 @@
+-- phpMyAdmin SQL Dump
+-- version 5.0.4
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Waktu pembuatan: 05 Agu 2021 pada 06.15
+-- Versi server: 10.4.17-MariaDB
+-- Versi PHP: 8.0.2
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `laravel8`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `db_pos`
+--
+
+CREATE TABLE `db_pos` (
+  `no_pos` int(11) NOT NULL,
+  `judul_pos` varchar(255) NOT NULL,
+  `isi_pos` text NOT NULL,
+  `waktu_pos` date NOT NULL DEFAULT current_timestamp(),
+  `gambar` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `db_pos`
+--
+
+INSERT INTO `db_pos` (`no_pos`, `judul_pos`, `isi_pos`, `waktu_pos`, `gambar`) VALUES
+(3, 'Welcome to Our Smart City', 'Selamat datang di Our Smart City!\r\nOur Smart City adalah website resmi yang akan memudahkan usser dalam menggunakan produk Our Smart City. \r\nMemiliki fitur utama untuk memonitor kerja dari produk, Our Smart City dinilai akan memudahkan usser dalam melakukan pemantauan produk Our Smart City miliknya sendiri. Pemantauan dapat berupa data realtime dan non realtime (history) yang kemudian akan ditampilkan di website untuk dilihat oleh usser. \r\nSelain memiliki fitur utama tersebut, Our Smart City hadir untuk memberikan informasi kepada usser mengenai produk yang sedang digunakan. Selain itu, pada website ini juga usser dapat mengetahui berita terbaru, mengirimkan keluhan pada sistem dan melakukan diskusi di forum discussion dengan pengguna lain.\r\n\r\nSelamat bergabung! Sampai jumpa di kejutan-kejutan luar biasa pada website Our Smart City!', '2021-08-03', '');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `db_user`
+--
+
+CREATE TABLE `db_user` (
+  `id` int(8) NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `alamat` varchar(255) NOT NULL,
+  `no_telp` int(11) NOT NULL,
+  `foto` varchar(256) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `db_user`
+--
+
+INSERT INTO `db_user` (`id`, `nama`, `email`, `alamat`, `no_telp`, `foto`) VALUES
+(1, 'gilang alif', 'gilangalif@gmail.com', 'Jalan Kanayakan no 21', 877892170, 'gilangalif@gmail.com.jpeg');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `failed_jobs`
+--
+
+CREATE TABLE `failed_jobs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `migrations`
+--
+
+CREATE TABLE `migrations` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `migrations`
+--
+
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(1, '2014_10_12_000000_create_users_table', 1),
+(2, '2014_10_12_100000_create_password_resets_table', 1),
+(3, '2019_08_19_000000_create_failed_jobs_table', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `password_resets`
+--
+
+CREATE TABLE `password_resets` (
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `password_resets`
+--
+
+INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
+('alfianacendani12@gmail.com', '$2y$10$pNoMV3g.0l7fvO0ZufnSTOzGJ4VrTxHNhUNteVG4r/0lnZH1GdEL2', '2021-05-24 23:46:55');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tb_barang`
+--
+
+CREATE TABLE `tb_barang` (
+  `no` int(11) NOT NULL,
+  `kode_barang` varchar(255) NOT NULL,
+  `produk` varchar(255) NOT NULL,
+  `merk_lampu` varchar(255) NOT NULL,
+  `watt_lampu` varchar(11) NOT NULL,
+  `merk_panel` varchar(255) NOT NULL,
+  `spesifikasi_panel` varchar(255) NOT NULL,
+  `merk_accu` varchar(255) NOT NULL,
+  `spesifikasi_accu` varchar(255) NOT NULL,
+  `merk_servo` varchar(255) NOT NULL,
+  `spesifikasi_servo` varchar(255) NOT NULL,
+  `merk_inverter` varchar(255) NOT NULL,
+  `spesifikasi_inverter` varchar(255) NOT NULL,
+  `gambar_lampu` varchar(16) NOT NULL,
+  `gambar_panel` varchar(16) NOT NULL,
+  `gambar_servo` varchar(16) NOT NULL,
+  `gambar_accu` varchar(16) NOT NULL,
+  `gambar_inverter` varchar(16) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `tb_barang`
+--
+
+INSERT INTO `tb_barang` (`no`, `kode_barang`, `produk`, `merk_lampu`, `watt_lampu`, `merk_panel`, `spesifikasi_panel`, `merk_accu`, `spesifikasi_accu`, `merk_servo`, `spesifikasi_servo`, `merk_inverter`, `spesifikasi_inverter`, `gambar_lampu`, `gambar_panel`, `gambar_servo`, `gambar_accu`, `gambar_inverter`) VALUES
+(0, 'SE00002', 'Smart Energy', '', '', 'Surya GH', '80Wp Poly Crystaline', 'MF', 'VRLA battery MF 30Ah 12Volt', 'Servo', 'servo', 'Super', '200 Watt 12Volt', '', 'panel1.jpg', 'servo1.jpg', 'accu1.jpg', 'inverter1.jpg'),
+(1, 'SL00001', 'Smart Light', 'Philips LED', '5 Watt', '', '', '', '', '', '', '', '', 'lampu1.jpg', '', '', '', ''),
+(5, 'SL00002', 'Smart Light', 'Samsung', '12 Watt', '', '', '', '', '', '', '', '', 'lampu2.jpg', '', '', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tb_chat`
+--
+
+CREATE TABLE `tb_chat` (
+  `no` int(255) NOT NULL,
+  `pengirim` varchar(255) NOT NULL,
+  `penerima` varchar(255) NOT NULL,
+  `isi_pesan` text NOT NULL,
+  `kode_chat` varchar(255) NOT NULL,
+  `tanggal_kirim` datetime(6) NOT NULL DEFAULT current_timestamp(6)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `tb_chat`
+--
+
+INSERT INTO `tb_chat` (`no`, `pengirim`, `penerima`, `isi_pesan`, `kode_chat`, `tanggal_kirim`) VALUES
+(2, 'Admin', 'bowom@gmail.com', 'Halo Bowo', 'bowom@gmail.comADMIN', '0000-00-00 00:00:00.000000'),
+(16, 'Admin', 'Usser', 'Welcome to Our Smart City! Disini, kamu dapat memberikan kritik, saran, pesan, kesan dan keluhan. Pesanmu akan kami balas dengan senang hati:-)', 'all', '0000-00-00 00:00:00.000000'),
+(17, 'bowom@gmail.com', 'Admin', 'Hai Admin', 'bowom@gmail.comADMIN', '2021-08-04 01:16:58.000000');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tb_integrasi`
+--
+
+CREATE TABLE `tb_integrasi` (
+  `nama_usser` varchar(255) NOT NULL,
+  `kode_integrasi` varchar(255) NOT NULL,
+  `kode_barang` varchar(255) NOT NULL,
+  `no` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `tb_integrasi`
+--
+
+INSERT INTO `tb_integrasi` (`nama_usser`, `kode_integrasi`, `kode_barang`, `no`) VALUES
+('Bowo Mahatma', 'Bowo MahatmaSE', 'SE00002', 41),
+('Bowo Mahatma', 'Bowo MahatmaSL', 'SL00001', 45),
+('Alfiana Cendani Putri', 'Alfiana Cendani PutriSE', 'SE00002', 46),
+('Alfiana Cendani Putri', 'Alfiana Cendani PutriSL', 'SL00001', 47),
+('gilang alif', 'gilang alifSE', 'SE00002', 48),
+('gilang alif', 'gilang alifSL', 'SL00001', 49);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `users`
+--
+
+CREATE TABLE `users` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Alfiana Cendani Putri', 'alfianacendani12@gmail.com', NULL, '$2y$10$7/67vfSQLweSxU2ZXGVizO9rzIfUwMSeZ9JUhnilOrZPW98v8k2da', NULL, '2021-05-24 20:13:28', '2021-05-24 20:13:28'),
+(2, 'Zulfi Fachrurozi', 'zulfif@gmail.com', NULL, '$2y$10$6zSVRdLbkfdG1kstyFGQP.p5ZxzZ86UftELh5os1ghudCywPJzEaa', NULL, '2021-07-14 22:16:59', '2021-07-14 22:16:59'),
+(3, 'gilang alif', 'gilangalif@gmail.com', NULL, '$2y$10$Kd1V1y/FJ5SpT5W.4Ad88OPaMCkuERvJUGQ1DXOmXFvcQ2XbB8s0y', NULL, '2021-07-14 22:57:25', '2021-07-14 22:57:25'),
+(4, 'Bowo Mahatma', 'bowom@gmail.com', NULL, '$2y$10$aQJJW9QtgaTzl78rWWlu.uCXHPQ3RMf6d7NY0w6dtCEiya.1psoYi', NULL, '2021-07-16 23:01:59', '2021-07-16 23:01:59');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indeks untuk tabel `db_pos`
+--
+ALTER TABLE `db_pos`
+  ADD PRIMARY KEY (`no_pos`);
+
+--
+-- Indeks untuk tabel `db_user`
+--
+ALTER TABLE `db_user`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+
+--
+-- Indeks untuk tabel `migrations`
+--
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `password_resets`
+--
+ALTER TABLE `password_resets`
+  ADD KEY `password_resets_email_index` (`email`);
+
+--
+-- Indeks untuk tabel `tb_barang`
+--
+ALTER TABLE `tb_barang`
+  ADD PRIMARY KEY (`kode_barang`);
+
+--
+-- Indeks untuk tabel `tb_chat`
+--
+ALTER TABLE `tb_chat`
+  ADD PRIMARY KEY (`no`);
+
+--
+-- Indeks untuk tabel `tb_integrasi`
+--
+ALTER TABLE `tb_integrasi`
+  ADD PRIMARY KEY (`no`),
+  ADD KEY `kode_barang` (`kode_barang`),
+  ADD KEY `kode_barang_2` (`kode_barang`);
+
+--
+-- Indeks untuk tabel `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_email_unique` (`email`);
+
+--
+-- AUTO_INCREMENT untuk tabel yang dibuang
+--
+
+--
+-- AUTO_INCREMENT untuk tabel `db_pos`
+--
+ALTER TABLE `db_pos`
+  MODIFY `no_pos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT untuk tabel `db_user`
+--
+ALTER TABLE `db_user`
+  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT untuk tabel `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT untuk tabel `tb_chat`
+--
+ALTER TABLE `tb_chat`
+  MODIFY `no` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT untuk tabel `tb_integrasi`
+--
+ALTER TABLE `tb_integrasi`
+  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+
+--
+-- AUTO_INCREMENT untuk tabel `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
